@@ -59,7 +59,7 @@ public class StudentController implements Initializable, PublisherInterface {
         }
     }
 
-    private void closeWindow(ActionEvent e){
+    private void closeWindow (ActionEvent e){
         Button button = (Button)(e.getSource());
         Stage stage = (Stage) button.getScene().getWindow();
         stage.close();
