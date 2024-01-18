@@ -7,7 +7,7 @@ spring:
         enable_lazy_load_no_trans: true
     show-sql: true
   datasource:
-    url: jdbc:mariadb://rathgeb.at:3306/d03e1108
-    username: d03e1108
-    password: HTLSTEYR
+    url: jdbc:mysql://localhost:4306/spring
+    username: spring
+    password: spring
 
