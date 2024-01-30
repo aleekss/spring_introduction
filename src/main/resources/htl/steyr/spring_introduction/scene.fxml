@@ -20,11 +20,26 @@
                   <MenuItem mnemonicParsing="false" onAction="#manageClasses" text="Manage" />
                </items>
             </Menu>
+            <Menu mnemonicParsing="false" text="Subject">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#manageSubjects" text="Manage" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Exam">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#manageExams" text="Manage" />
+                </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Students">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#manageStudents" text="Manage" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Exam">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#manageExams" text="Manage" />
+                </items>
+            </Menu>
         </menus>
       </MenuBar>
       <ListView onMouseClicked="#schoolClassListViewClicked" fx:id="schoolClassListView" layoutY="25.0" prefHeight="375.0" prefWidth="250.0" />

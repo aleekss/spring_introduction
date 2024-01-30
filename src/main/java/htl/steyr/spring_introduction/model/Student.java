@@ -2,6 +2,8 @@ package htl.steyr.spring_introduction.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "astokani_student")
 public class Student {
@@ -20,6 +22,17 @@ public class Student {
     @ManyToOne
     @JoinColumn(name = "school_class_id")
     private SchoolClass schoolClass;
+
+    public List<Exam> getExams() {
+        return exams;
+    }
+
+    public void setExams(List<Exam> exams) {
+        this.exams = exams;
+    }
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Exam> exams;
 
     public SchoolClass getSchoolClass() {
         return schoolClass;

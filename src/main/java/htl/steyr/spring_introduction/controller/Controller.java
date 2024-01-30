@@ -106,6 +106,48 @@ public class Controller implements Initializable {
         stage.show();
     }
 
+    public void manageExams(ActionEvent actionEvent) throws IOException {
+        ISubscriberInterface sub = () -> {
+            schoolClassListView.getItems().clear();
+            schoolClassListView.getItems().addAll(schoolClassRepository.findAll());
+            studentListView.getItems().clear();
+
+        };
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("edit_exam.fxml"));
+        loader.setControllerFactory(JavaFxApplication.getSpringContext()::getBean);
+        Parent root = loader.load();
+
+        PublisherInterface controller = loader.getController();
+        controller.addSubscriber(sub);
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void manageSubjects(ActionEvent actionEvent) throws IOException {
+        ISubscriberInterface sub = () -> {
+            schoolClassListView.getItems().clear();
+            schoolClassListView.getItems().addAll(schoolClassRepository.findAll());
+            studentListView.getItems().clear();
+
+        };
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("edit_subject.fxml"));
+        loader.setControllerFactory(JavaFxApplication.getSpringContext()::getBean);
+        Parent root = loader.load();
+
+        PublisherInterface controller = loader.getController();
+        controller.addSubscriber(sub);
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
 
 

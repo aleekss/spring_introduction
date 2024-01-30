@@ -15,8 +15,6 @@ import java.util.List;
 @SpringBootApplication
 public class SpringIntroductionApplication {
 
-
-
     public static void main(String[] args) {
         Application.launch(JavaFxApplication.class, args);
 
