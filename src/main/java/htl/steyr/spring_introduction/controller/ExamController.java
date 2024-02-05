@@ -1,7 +1,7 @@
 package htl.steyr.spring_introduction.controller;
 
 import htl.steyr.spring_introduction.model.*;
-import htl.steyr.spring_introduction.repository.SchoolClassRepository;
+import htl.steyr.spring_introduction.repository.ExamRepository;
 import htl.steyr.spring_introduction.repository.StudentRepository;
 import htl.steyr.spring_introduction.repository.SubjectRepository;
 import javafx.event.ActionEvent;
@@ -11,13 +11,15 @@ import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
-import java.util.List;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 @Component
 public class ExamController implements Initializable, PublisherInterface {
 
-
+private final ExamRepository examRepository;
     public ComboBox<Subject> subjectComboBox;
     public ComboBox<Student> studentComboBox;
     public DatePicker datePicker;
@@ -25,7 +27,8 @@ public class ExamController implements Initializable, PublisherInterface {
     private ISubscriberInterface subscriber = null;
     private final StudentRepository studentRepository;
     private final SubjectRepository subjectRepository;
-    public ExamController(StudentRepository studentRepository, SubjectRepository subjectRepository) {
+    public ExamController(ExamRepository examRepository, StudentRepository studentRepository, SubjectRepository subjectRepository) {
+        this.examRepository = examRepository;
         this.studentRepository = studentRepository;
         this.subjectRepository = subjectRepository;
     }
@@ -39,6 +42,18 @@ public class ExamController implements Initializable, PublisherInterface {
     }
 
     public void saveClicked(ActionEvent actionEvent) {
+        Subject selSubject = subjectComboBox.getValue();
+        Student selStudent = studentComboBox.getValue();
+        LocalDate selDate = datePicker.getValue();
+        int grade = gradeSpinner.getValue();
+
+        Exam e = new Exam();
+        e.setGrade(grade);
+        e.setDate(LocalDate.from(Date.from(selDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()).toInstant()));
+        e.setStudent(selStudent);
+        e.getSubject(selSubject);
+
+
 
     }
 

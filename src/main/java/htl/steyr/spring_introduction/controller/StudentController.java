@@ -69,6 +69,10 @@ public class StudentController implements Initializable, PublisherInterface {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<SchoolClass> classes = classRepository.findAll();
         classComboBox.getItems().addAll(classes); //füge alle Klassen zur ComboBox hinzu!
+
+
+        List<Student> negativeStudents = studentRepo.findALlStudensWithNegativeGrades();
+         negativeStudents.forEach(System.out::print);
     }
 
     @Override

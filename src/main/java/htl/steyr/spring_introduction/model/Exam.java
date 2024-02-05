@@ -2,6 +2,7 @@ package htl.steyr.spring_introduction.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -46,7 +47,7 @@ public class Exam {
         this.student = student;
     }
 
-    public Subject getSubject() {
+    public Subject getSubject(Subject selSubject) {
         return subject;
     }
 
@@ -74,8 +75,7 @@ public class Exam {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
+    public void setDate(LocalDate from) {
+    }
 }
